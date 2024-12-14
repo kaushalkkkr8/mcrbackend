@@ -5,15 +5,11 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const Reciepe = require("./model/reciepeModel");
-const corsOptions = {
-  origin: "*",
-  credentials: true,
-  optionSuccessStatus: 200,
-};
+
 
 data();
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Welcome to express");
