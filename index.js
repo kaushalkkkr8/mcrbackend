@@ -19,11 +19,12 @@ app.get("/", (req, res) => {
   res.send("Welcome to express");
 });
 
-app.post("/reciepe", async (req, res) => {
+app.post("/addreciepe", async (req, res) => {
   const reciepe = req.body;
+  
   try {
     const addReciepe = await Reciepe(reciepe);
-    addReciepe.save();
+ addReciepe.save();
 
 
     res.status(201).json({ message: "Add successfully", addReciepe });
@@ -36,10 +37,10 @@ app.get("/reciepe", async (req, res) => {
   try {
     const allReciepe = await Reciepe.find();
     if (allReciepe.length > 0) {
-      res.status(201).json({ message: "reciepe found successfully", allReciepe });
+      res.status(201).json( allReciepe );
     }
   } catch (error) {
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: "Internal Server Error" })
   }
 });
 
